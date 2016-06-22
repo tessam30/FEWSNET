@@ -95,19 +95,40 @@ df2 = geocode(fews_geo$market_loc, source = "google")
 
 fews_geo = cbind(fews_geo, df2)
 
+
 # For those not geocoding
 # Konso  = karati, Ethiopia
 # Red Light, Liberia = Monrovia
 # Saclepea =  saglelpie, Liberia
 # Togwajale = Tog-Wajale, Somalia 
 
-
-
 # Ignore those not correctly geocoded for the moment
 fews_geo2 = fews_geo %>% filter(!is.na(lat)) %>% filter(market_loc != "NA, NA")
 
+# Combine the geocoded dataframe with the full dataframe
+fews_db = mutate(fews_db, market_loc = paste(`Market location`, Country, sep = ', ')) 
+fews_db_geo = left_join(fews_db, fews_geo, by = "market_loc")
+
+fews_db_geo = arrange(fews_db_geo, Country, `Market location`, date)
+#save a cut of the geocoded data as a .cvs
+write.csv(fews_db_geo, file = "fews_geocoded.csv")
+
+
+#Stopped here -- need to plot data and see what they look like over time
+mw = filter(fews_db_geo, Country == "Malawi") 
+glimpse(mw)
+
+
+table(mw$Commodity)
+
+
+mw_map = get_map(location = c(lon = mean(mw$lon), lat = mean(mw$lat)), zoom = 5)   
+str(mw_map)
+ggmap(mw_map)  
+ 
+  
 mapfews <- get_map(location = c(lon = mean(fews_geo2$lon), lat = mean(fews_geo2$lat)), zoom = 3,
-                      maptype = "hybrid", scale = 2)
+                      maptype = "hybrid", source = "osm", scale = 2)
 
 ggmap(mapfews) +
   geom_point(data = fews_geo2, aes(x = lon, y = lat, fill = "red", alpha = 0.8), size = 3, shape = 21) +
