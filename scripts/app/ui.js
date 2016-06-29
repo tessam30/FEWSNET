@@ -2,13 +2,16 @@
  *	User Interface
  **/
 
- define(["app/styles", "app/layers", "app/styles"], function(styles, layers, styles) {
+ define(["app/layers", "app/styles"], function(layers, styles) {
  	return {
  		title: "Africa - Commodities Price Anomalies",
+ 		currCmod: "",
+ 		currMonth: "",
  		month: "",
  		months: [],
  		lmonths: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
  		includeMonths: true,
+ 		currYear: "",
  		year: "",
  		years: [],
  		includeYears: false,
@@ -32,8 +35,6 @@
  			});
 
  			$this.info = info;
-
-
 
  			hisSpeed.slider({
  				value: 0,
@@ -94,10 +95,46 @@
  				}
  			});
 
- 			//Change event for the month and year
+ 			//Change events for the cmod, month and year
  			var comms = $("#comms"),
  				month = $("#price-month"),
  				year = $("#price-year");
+
+ 			comms.on("change", function(evt) {
+ 				var v = $(evt.target).val(),
+ 					m = $this.currMonth,
+ 					y = $this.currYear;
+
+ 				if (v && v != "") {
+ 					$this.currCmod = v;
+ 					app.currCmod = $this.currCmod;
+ 					styles.updateMarketStyles(v, m, y);
+ 				}
+ 			});
+
+ 			month.on("change", function(evt) {
+ 				var v = $(evt.target).val(),
+ 					c = $this.currCmod,
+ 					y = $this.currYear;
+
+ 				if (v && v != "") {
+ 					$this.currMonth = v;
+ 					app.currMonth = $this.currMonth;
+ 					styles.updateMarketStyles(c, v, y);
+ 				}
+ 			});
+
+ 			year.on("change", function(evt) {
+ 				var v = $(evt.target).val(),
+ 					c = $this.currCmod,
+ 					m = $this.currMonth;
+
+ 				if (v && v != "") {
+ 					$this.currYear = v;
+ 					app.currYear = $this.currYear;
+ 					styles.updateMarketStyles(c, m, v);
+ 				}
+ 			});
 
  			$this.commsEl = comms;
  			$this.monthsEl = month;
@@ -385,14 +422,13 @@
  			panel.toggle("slow");
  		},
  		displayInitialData: function(evt) {
- 			console.log("Data ready: ", evt);
-
  			var $this = this;
 
  			$this.populateCommodities(layers.commodities);
  			$this.populateYears(layers.years);
  			$this.populateMonths(layers.months);
 
+ 			//update markets sytles
  			styles.updateMarketStyles();
  		},
  		populateCommodities: function(cmods) {
@@ -408,6 +444,10 @@
 
  				$this.commsEl.append(opt);
  			});
+ 			//set default value
+ 			$this.currCmod = layers.commodities[0];
+ 			app.currCmod = $this.currCmod;
+ 			$this.commsEl.val($this.currCmod);
  		},
  		populateMonths: function(months) {
  			$this = this;
@@ -422,6 +462,10 @@
  				
  				$this.monthsEl.append(opt);
  			});
+ 			//set default value
+ 			$this.currMonth = layers.months[layers.months.length - 1];
+ 			app.currMonth = $this.currMonth;
+ 			$this.monthsEl.val($this.currMonth);
  		},
  		populateYears: function(years) {
  			$this = this;
@@ -435,6 +479,10 @@
 
  				$this.yearsEl.append(opt);
  			});
+ 			//set default value
+ 			$this.currYear = layers.years[layers.years.length - 1];
+ 			app.currYear = $this.currYear;
+ 			$this.yearsEl.val($this.currYear);
  		},
  		getHistoryField: function() {
  			var m = $("#price-month").val(),

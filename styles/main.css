@@ -102,7 +102,7 @@ html, body {
 
 #graths-div {
     position: absolute;
-    /*display: none;*/
+    display: none;
     /*height: 20%;*/
     height: auto;
     min-height: 75px;

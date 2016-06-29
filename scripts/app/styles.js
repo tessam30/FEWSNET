@@ -137,6 +137,9 @@ define(["app/layers"], function(layers) {
  			return ipcsData;
  		},
  		updateMarketStyles: function(com, month, year) {
+ 			//console.log("Layers: ", layers);
+ 			console.log("Styles: ", com, month, year);
+
  			var $this = this,
  				com = com,
  				month = month,
@@ -193,12 +196,13 @@ define(["app/layers"], function(layers) {
 
 				var pa = null;
 
-				if (com && month && year) {
-					pa = layers.getCommoditiesAttr(mid, col, com, month, year);
+				if (!com || !month || !year) {
+					com = app.currCmod;
+					month = app.currMonth;
+					year = app.currYear;
 				}
-				else {
-					pa = layers.getCommoditiesAttr(mid, col, "Maize", 12, 2012);
-				}
+
+				pa = layers.getCommoditiesAttr(mid, col, com, month, year);
 
 				//console.log("Price anomaly: ", pa);
 
@@ -231,7 +235,7 @@ define(["app/layers"], function(layers) {
 					size = dsize;
 					mcolor = mcolor_w3;
 
-					console.log("No price anomaly: ", name, pa);
+					//console.log("No price anomaly: ", name, pa, size, mcolor);
 				}
 				
 				var style = new ol.style.Style({

@@ -57,7 +57,7 @@ require(["app/ui", "app/mapping", "app/layers"],
 	});
 
 	var m = markets.getSource().on("change", function(evt) {
-		console.log("Markets Layer: ", evt);
+		//console.log("Markets Layer: ", evt);
 		//unbind the change event
 		app.map.unByKey(m);
 		//get commodities data

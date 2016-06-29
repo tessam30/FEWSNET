@@ -2,7 +2,7 @@
  * Mapping module
  **/
 
- define(["app/styles"], function(styles) {
+ define([], function() {
  	return {
  		getEQHeatlayer: function() {
 
@@ -170,10 +170,10 @@
 						return attr;
 					});
 
-					console.log("Commodities: ", uCommodities);
-					console.log("Months: ", uMonths);
-					console.log("Years: ", uYears);
-					console.log("marketsData: ", marketsData[1]);
+					//console.log("Commodities: ", uCommodities);
+					//console.log("Months: ", uMonths);
+					//console.log("Years: ", uYears);
+					//console.log("marketsData: ", marketsData[1]);
 
 					$this.commFeats = feats;
 					$this.commFeatsAttrs = fAttrs;
@@ -182,6 +182,7 @@
 					$this.months = uMonths;
 					$this.marketsData = marketsData;
 
+					//alert the app of the data availability
 					app.mapContainer.trigger("app:data:ready");
  				},
  				error: function(xhr, status, error) {
