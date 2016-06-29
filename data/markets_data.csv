@@ -1,0 +1,230 @@
+mid,country,market,market_loc,name,lat,lon
+1,Benin,Bohicon,"Bohicon, Benin",NA,7.1797684,2.0714223
+2,Benin,Come,"Come, Benin",NA,6.4096168,1.8855057
+3,Benin,Cotonou,"Cotonou, Benin",Dantopka,6.3702928,2.3912362
+4,Benin,Malanville,"Malanville, Benin",NA,11.8633332,3.3842473
+5,Benin,Parakou,"Parakou, Benin",NA,9.3466822,2.6090043
+6,Burundi,Bujumbura,"Bujumbura, Burundi",NA,-3.361378,29.3598782
+7,Burundi,Gitega,"Gitega, Burundi",NA,-3.428803,29.924903
+8,Burundi,Kirundo,"Kirundo, Burundi",NA,-2.5848378,30.0961296
+9,Burundi,Muyinga,"Muyinga, Burundi",NA,-2.8409385,30.3464333
+10,Burundi,Ngozi,"Ngozi, Burundi",NA,-2.9083521,29.8265492
+11,Burundi,Ruyigi,"Ruyigi, Burundi",NA,-3.4750027,30.2483881
+12,Cape Verde,Praia,"Praia, Cape Verde",NA,14.93305,-23.5133267
+13,Chad,Abeche,"Abeche, Chad",NA,13.8359124,20.8433709
+14,Chad,Bol,"Bol, Chad",NA,10.5409599,15.8598553
+15,Chad,Mongo,"Mongo, Chad",NA,12.1862546,18.6917922
+16,Chad,Moundou,"Moundou, Chad",NA,8.5914775,16.0757749
+17,Chad,Moussoro,"Moussoro, Chad",NA,13.648096,16.493598
+18,Chad,N'Djamena,"N'Djamena, Chad",NA,12.1348457,15.0557415
+19,Chad,Sarh,"Sarh, Chad",NA,9.1412086,18.3682641
+20,Côte D'Ivoire,Abidjan,"Abidjan, Côte D'Ivoire",Adjame,5.3599517,-4.0082563
+21,Côte D'Ivoire,Bouake,"Bouake, Côte D'Ivoire",NA,7.690466,-5.0390536
+22,Djibouti,Alisebiah,"Alisebiah, Djibouti",NA,11.825138,42.590275
+23,Djibouti,Arta,"Arta, Djibouti",NA,11.5255528,42.8479474
+24,Djibouti,Dikhil,"Dikhil, Djibouti",NA,11.1054336,42.3704744
+25,Djibouti,Djibouti City,"Djibouti City, Djibouti",NA,11.5720765,43.1456475
+26,Djibouti,Obock,"Obock, Djibouti",NA,11.9647465,43.2884071
+27,Djibouti,Tadjourah,"Tadjourah, Djibouti",NA,11.7913106,42.8796227
+28,Ethiopia,Addis Ababa,"Addis Ababa, Ethiopia",NA,8.9806034,38.7577605
+29,Ethiopia,Bahir Dar,"Bahir Dar, Ethiopia",NA,11.5742086,37.3613533
+30,Ethiopia,Dessie,"Dessie, Ethiopia",NA,11.1270398,39.6363314
+31,Ethiopia,Dire Dawa,"Dire Dawa, Ethiopia",NA,9.6008747,41.850142
+32,Ethiopia,Jijiga,"Jijiga, Ethiopia",NA,9.3567838,42.7955185
+33,Ethiopia,Jimma,"Jimma, Ethiopia",NA,7.6738908,36.8357927
+34,Ethiopia,Konso,"Konso, Ethiopia",SNNP Region,5.3404492,37.4387894
+35,Ethiopia,Mekele,"Mekele, Ethiopia",NA,13.4935504,39.465738
+36,Ethiopia,Shashamene,"Shashamene, Ethiopia",NA,7.1972968,38.6005328
+37,Ethiopia,Sodo,"Sodo, Ethiopia","Walayita Zone, SNNP Region",6.8528087,37.7609688
+38,Ethiopia,Yabelo,"Yabelo, Ethiopia","Borena Zone, Oromiya Region",4.8949753,38.1001629
+39,Gambia,Banjul,"Banjul, Gambia",NA,13.4548761,-16.5790323
+40,Ghana,Accra,"Accra, Ghana",NA,5.6037168,-0.1869644
+41,Ghana,Tamale,"Tamale, Ghana",NA,9.4329186,-0.8484524
+42,Guinea,Conakry,"Conakry, Guinea",Medina,9.6411855,-13.5784012
+43,Kenya,Eldoret,"Eldoret, Kenya",NA,0.5142775,35.2697802
+44,Kenya,Garissa,"Garissa, Kenya",NA,-0.4532293,39.6460988
+45,Kenya,Kisumu,"Kisumu, Kenya",NA,-0.0917016,34.7679568
+46,Kenya,Kitui,"Kitui, Kenya",NA,-1.3750813,37.9952144
+47,Kenya,Lodwar (Turkana),"Lodwar (Turkana), Kenya",NA,3.1155165,35.6040785
+48,Kenya,Mandera,"Mandera, Kenya",NA,3.9356389,41.8551162
+49,Kenya,Marsabit,"Marsabit, Kenya",NA,2.3354966,37.9943453
+50,Kenya,Mombasa,"Mombasa, Kenya",NA,-4.0434771,39.6682065
+51,Kenya,Moyale,"Moyale, Kenya",NA,3.5210916,39.0546262
+52,Kenya,Nairobi,"Nairobi, Kenya",NA,-1.2920659,36.8219462
+53,Kenya,Wajir,"Wajir, Kenya",NA,1.7488388,40.058633
+54,Liberia,Bo,"Bo, Liberia",Bo-Waterside,7.005388,-11.3629633
+55,Liberia,Buchanan ,"Buchanan , Liberia",NA,5.887247,-10.0303723
+56,Liberia,Foya,"Foya, Liberia",NA,8.3599972,-10.2067501
+57,Liberia,Gbarnga,"Gbarnga, Liberia",NA,7.0024321,-9.4728244
+58,Liberia,Monrovia,"Monrovia, Liberia",NA,6.2907432,-10.7605239
+59,Liberia,Pleebo,"Pleebo, Liberia",NA,4.589409,-7.6731
+60,Liberia,Saglelpie,"Saglelpie, Liberia",NA,6.9615808,-8.8417888
+61,Liberia,Tubmanburg,"Tubmanburg, Liberia",NA,6.8701522,-10.8253946
+62,Liberia,Voinjama,"Voinjama, Liberia",NA,8.4201951,-9.7539282
+63,Liberia,Zwedru,"Zwedru, Liberia",NA,6.064944,-8.1393179
+64,Malawi,Bangula,"Bangula, Malawi",NA,-16.573253,35.1103736
+65,Malawi,Karonga,"Karonga, Malawi",NA,-9.952536,33.9248222
+66,Malawi,Lilongwe,"Lilongwe, Malawi",NA,-13.9626121,33.7741195
+67,Malawi,Lunzu,"Lunzu, Malawi",NA,-15.6527167,35.0195406
+68,Malawi,Mchinji,"Mchinji, Malawi",NA,-13.8000058,32.8930441
+69,Malawi,Mitundu,"Mitundu, Malawi",NA,-14.2403769,33.7685332
+70,Malawi,Mzuzu,"Mzuzu, Malawi",NA,-11.4389649,34.0084395
+71,Malawi,Ngabu,"Ngabu, Malawi",NA,-16.4404738,34.8693141
+72,Malawi,Nsanje,"Nsanje, Malawi",NA,-16.9205934,35.253304
+73,Malawi,Salima,"Salima, Malawi",NA,-13.7795533,34.458641
+74,Mauritania,Adel Bagrou,"Adel Bagrou, Mauritania",NA,15.675327,-7.0229629
+75,Mauritania,Aoujeft,"Aoujeft, Mauritania",NA,20.0265559,-13.0544185
+76,Mauritania,Boghé,"Boghé, Mauritania",NA,16.5950699,-14.2599437
+77,Mauritania,Magta-lahjar,"Magta-lahjar, Mauritania",NA,17,-13.5
+78,Mauritania,Mederdra,"Mederdra, Mauritania",NA,16.9225153,-15.6617813
+79,Mauritania,Nouakchott,"Nouakchott, Mauritania",NA,18.0735299,-15.9582372
+80,Mozambique,Chokwe,"Chokwe, Mozambique",NA,-24.5323166,32.9831998
+81,Mozambique,Gorongosa,"Gorongosa, Mozambique",NA,-18.6870901,34.0724943
+82,Mozambique,Manica,"Manica, Mozambique",NA,-19.5059787,33.438353
+83,Mozambique,Maputo,"Maputo, Mozambique",NA,-25.891968,32.6051351
+84,Mozambique,Maxixe,"Maxixe, Mozambique",NA,-23.8611302,35.3411388
+85,Mozambique,Nampula,"Nampula, Mozambique",NA,-15.1266347,39.2687161
+86,Mozambique,Tete,"Tete, Mozambique",NA,-16.1328104,33.6063855
+87,Mozambique,Xai-Xai,"Xai-Xai, Mozambique",NA,-25.060476,33.6958809
+88,Niger,Abalak,"Abalak, Niger",NA,15.4642939,6.2853999
+89,Niger,Agadez,"Agadez, Niger",NA,16.9741689,7.986535
+90,Niger,Bakin Birji,"Bakin Birji, Niger",NA,14.2544521,8.7949386
+91,Niger,Diffa,"Diffa, Niger",NA,13.3132472,12.6158803
+92,Niger,Filingue,"Filingue, Niger",NA,14.350193,3.3237824
+93,Niger,Gaya,"Gaya, Niger",NA,11.8852599,3.4548833
+94,Niger,In Gall,"In Gall, Niger",NA,16.7867314,6.934332
+95,Niger,Maradi,"Maradi, Niger",NA,13.5009779,7.1036396
+96,Niger,Nguigmi,"Nguigmi, Niger",NA,14.2553505,13.1134915
+97,Niger,Niamey,"Niamey, Niger",NA,13.5115963,2.1253854
+98,Niger,Ouallam,"Ouallam, Niger",NA,14.3147935,2.0885853
+99,Niger,Tahoua,"Tahoua, Niger",NA,14.8904575,5.2579968
+100,Niger,Tera,"Tera, Niger",NA,14.0031627,0.7556575
+101,Niger,Tillaberi,"Tillaberi, Niger",NA,14.6489525,2.1450245
+102,Niger,Tillabery,"Tillabery, Niger",NA,14.2061141,1.4579696
+103,Niger,Tounfafi,"Tounfafi, Niger",NA,15.0333333,5.6333333
+104,Niger,Zinder,"Zinder, Niger",NA,13.8018124,8.98527
+105,Nigeria,Bodija,"Bodija, Nigeria",Ibadan,7.4358695,3.9192628
+106,Nigeria,Damasak,"Damasak, Nigeria",NA,13.0996105,12.5113296
+107,Nigeria,Dandume,"Dandume, Nigeria",NA,11.5300309,7.3050236
+108,Nigeria,Giwa,"Giwa, Nigeria",NA,11.2801638,7.417857
+109,Nigeria,Ilela,"Ilela, Nigeria",NA,7.6395498,4.7588042
+110,Nigeria,Kano,"Kano, Nigeria",Dawanu,12.0021794,8.5919561
+111,Nigeria,Kaura,"Kaura, Nigeria",NA,9.6321773,8.5034561
+112,Nigeria,Maidua,"Maidua, Nigeria",NA,11.5300309,7.3050236
+113,Nigeria,Saminaka,"Saminaka, Nigeria",NA,9.1127408,6.7554214
+114,Rwanda,Bugesera,"Bugesera, Rwanda",Ruhuha,-2.231532,30.112735
+115,Rwanda,Burera,"Burera, Rwanda",Kirambo,-1.4877669,29.8352303
+116,Rwanda,Gakenke,"Gakenke, Rwanda",Gakenke,-1.6908586,29.8352303
+117,Rwanda,Gatsibo,"Gatsibo, Rwanda",Rwagitima,-1.6139609,30.3896651
+118,Rwanda,Gicumbi,"Gicumbi, Rwanda",Byumba,-1.5790307,30.065982
+119,Rwanda,Gisagara,"Gisagara, Rwanda",Musha,-2.5854308,29.8439109
+120,Rwanda,Huye,"Huye, Rwanda",Butare,-2.5861659,29.6890263
+121,Rwanda,Kamonyi,"Kamonyi, Rwanda",Kayenzi,-1.9799842,29.8583772
+122,Rwanda,Karongi,"Karongi, Rwanda",Birambo,-2.1789703,29.3714909
+123,Rwanda,Kayonza,"Kayonza, Rwanda",Kabarondo,-1.9022654,30.5091977
+124,Rwanda,Kigali City,"Kigali City, Rwanda",Kimironko,-1.9705786,30.1044288
+125,Rwanda,Kirehe,"Kirehe, Rwanda",Nyakarambi,-2.2632727,30.6415611
+126,Rwanda,Muhanga,"Muhanga, Rwanda",Muhanga,-1.8967974,29.742604
+127,Rwanda,Musanze,"Musanze, Rwanda",Musanze,-1.5034616,29.6325305
+128,Rwanda,Ngoma,"Ngoma, Rwanda",Kibungo,-2.5439657,29.7686614
+129,Rwanda,Ngororero,"Ngororero, Rwanda",Kabaya,-1.8637655,29.6252858
+130,Rwanda,Nyabihu,"Nyabihu, Rwanda",Mukamira,-1.6275355,29.5571677
+131,Rwanda,Nyagatare,"Nyagatare, Rwanda",Rukomo,-1.2897375,30.3349024
+132,Rwanda,Nyamagabe,"Nyamagabe, Rwanda",Kabacuzi,-2.4538548,29.464359
+133,Rwanda,Nyamasheke,"Nyamasheke, Rwanda",Bushenge,-2.3215082,29.1855785
+134,Rwanda,Nyanza,"Nyanza, Rwanda",Nyanza,-2.3496095,29.7512903
+135,Rwanda,Nyaruguru,"Nyaruguru, Rwanda",Ndago,-2.6627643,29.464359
+136,Rwanda,Rubavu,"Rubavu, Rwanda",Mahoko,-1.6892916,29.2930875
+137,Rwanda,Ruhango,"Ruhango, Rwanda",Ruhango,-2.0141886,29.8583772
+138,Rwanda,Rulindo,"Rulindo, Rwanda",Base,-1.7555339,30.0202964
+139,Rwanda,Rusizi,"Rusizi, Rwanda",Bugarama,-2.5302697,29.1855785
+140,Rwanda,Rutsiro,"Rutsiro, Rwanda",Congo Nil,-1.9624259,29.3874568
+141,Rwanda,Rwamagana,"Rwamagana, Rwanda",Karenge,-1.9535133,30.4386437
+142,Senegal,Dakar,"Dakar, Senegal",Tilene,14.7645042,-17.3660286
+143,Senegal,Kaolak,"Kaolak, Senegal",NA,14.1652083,-16.0757749
+144,Senegal,Saint-Louis,"Saint-Louis, Senegal",NA,16.0326307,-16.4818167
+145,Senegal,Tambacounda,"Tambacounda, Senegal",NA,13.7725888,-13.6710059
+146,Senegal,Ziguichor,"Ziguichor, Senegal",NA,12.5641479,-16.2639825
+147,Somalia,Afgoi,"Afgoi, Somalia",NA,2.3112513,45.1494505
+148,Somalia,Afmadow,"Afmadow, Somalia",NA,0.5150746,42.0757061
+149,Somalia,Baidao,"Baidao, Somalia",NA,3.1140502,43.651925
+150,Somalia,Baidoa,"Baidoa, Somalia",NA,3.1140502,43.651925
+151,Somalia,Beled Hawa,"Beled Hawa, Somalia",NA,3.9239247,41.8749755
+152,Somalia,Beled Weyn ,"Beled Weyn , Somalia",NA,4.7429412,45.2009362
+153,Somalia,Borama,"Borama, Somalia",NA,9.9360092,43.184402
+154,Somalia,Bossaso,"Bossaso, Somalia",NA,11.2755407,49.1878994
+155,Somalia,Buale,"Buale, Somalia",NA,1.2317783,42.7076107
+156,Somalia,Burao,"Burao, Somalia",NA,9.5259166,45.5346307
+157,Somalia,Dhusamareb,"Dhusamareb, Somalia",NA,5.5380625,46.3864672
+158,Somalia,Doblei,"Doblei, Somalia",NA,1.0908333,42.1333333
+159,Somalia,El Barde,"El Barde, Somalia",NA,4.7465849,43.9436788
+160,Somalia,Elwak,"Elwak, Somalia",NA,2.6861757,41.441251
+161,Somalia,Erigavo,"Erigavo, Somalia",NA,10.6149654,47.3657603
+162,Somalia,Galkayo,"Galkayo, Somalia",NA,6.7872726,47.4392352
+163,Somalia,Garowe,"Garowe, Somalia",NA,8.4084158,48.4837239
+164,Somalia,Hargeisa  ,"Hargeisa  , Somalia",NA,9.562389,44.0770134
+165,Somalia,Jamame,"Jamame, Somalia",NA,0.0668528,42.7442571
+166,Somalia,Jilib,"Jilib, Somalia",NA,0.4919195,42.778437
+167,Somalia,Jowhar,"Jowhar, Somalia",NA,2.7774231,45.5016253
+168,Somalia,Kismayo,"Kismayo, Somalia",NA,-0.3560455,42.5460573
+169,Somalia,Lasanod,"Lasanod, Somalia",NA,8.475987,47.3657603
+170,Somalia,Lugh,"Lugh, Somalia",NA,3.8131083,42.5460573
+171,Somalia,Merka,"Merka, Somalia",NA,1.8303572,44.813111
+172,Somalia,Mogadishu,"Mogadishu, Somalia",Bakara,2.0469343,45.3181623
+173,Somalia,Qorioley,"Qorioley, Somalia",NA,1.7880873,44.5290018
+174,Somalia,Tog-Wajale,"Tog-Wajale, Somalia",NA,9.6030127,43.3415357
+175,Somalia,Wanle Weyne,"Wanle Weyne, Somalia",NA,2.6195588,44.8949683
+176,South Sudan,Aweil,"Aweil, South Sudan",NA,8.7670867,27.3998369
+177,South Sudan,Bor,"Bor, South Sudan",NA,6.2132663,31.5655424
+178,South Sudan,Juba,"Juba, South Sudan",Konyokonyo,4.859363,31.57125
+179,South Sudan,Kapoeta,"Kapoeta, South Sudan",NA,4.7713162,33.5923941
+180,South Sudan,Malakal,"Malakal, South Sudan",NA,9.5279875,31.6682347
+181,South Sudan,Wau,"Wau, South Sudan",NA,7.7091884,27.9834738
+182,Sudan,Ad-Damazin,"Ad-Damazin, Sudan",NA,11.785454,34.3421397
+183,Sudan,Al Qadarif,"Al Qadarif, Sudan",NA,14.024307,35.3685679
+184,Sudan,Dongola,"Dongola, Sudan",NA,19.1461403,30.4703258
+185,Sudan,El Fasher,"El Fasher, Sudan",NA,13.6197501,25.3548713
+186,Sudan,El Obeid,"El Obeid, Sudan",NA,13.1782149,30.2166519
+187,Sudan,Geneina,"Geneina, Sudan",NA,13.447898,22.4649083
+188,Sudan,Kaduqli,"Kaduqli, Sudan",NA,11.0105443,29.7136456
+189,Sudan,Khartoum,"Khartoum, Sudan",Om Durman,15.5006544,32.5598994
+190,Sudan,Nyala,"Nyala, Sudan",NA,12.0518011,24.8804853
+191,Sudan,Port Sudan,"Port Sudan, Sudan",Red Sea,19.5903471,37.1901616
+192,Tanzania,Arusha,"Arusha, Tanzania",NA,-3.3869254,36.6829927
+193,Tanzania,Dar es Salaam,"Dar es Salaam, Tanzania",NA,-6.792354,39.2083284
+194,Tanzania,Dodoma,"Dodoma, Tanzania",NA,-6.162959,35.7516069
+195,Tanzania,Iringa,"Iringa, Tanzania",NA,-7.768059,35.6860723
+196,Tanzania,Kigoma,"Kigoma, Tanzania",NA,-4.8824092,29.6615055
+197,Tanzania,Lindi,"Lindi, Tanzania",NA,-9.9876076,39.6982485
+198,Tanzania,Mbeya,"Mbeya, Tanzania",NA,-8.9094014,33.4607744
+199,Tanzania,Moduli,"Moduli, Tanzania",NA,-3.2958686,36.4526678
+200,Tanzania,Mtwara,"Mtwara, Tanzania",NA,-10.3112236,40.1759806
+201,Tanzania,Mwanza,"Mwanza, Tanzania",NA,-2.5164305,32.9174517
+202,Tanzania,Ngorongoro,"Ngorongoro, Tanzania",NA,-3.2415439,35.4877778
+203,Tanzania,Songea,"Songea, Tanzania",NA,-10.6462694,35.6423527
+204,Tanzania,Tanga,"Tanga, Tanzania",NA,-5.0888751,39.1023228
+205,Togo,Dapaong,"Dapaong, Togo",NA,10.8733058,0.2010233
+206,Togo,Kara,"Kara, Togo",NA,9.5486112,1.1977158
+207,Uganda,Arua,"Arua, Uganda",NA,3.0303299,30.907304
+208,Uganda,Gulu,"Gulu, Uganda",NA,2.7724038,32.2880726
+209,Uganda,Kampala,"Kampala, Uganda",NA,0.3475964,32.5825197
+210,Uganda,Lira,"Lira, Uganda",NA,2.2580829,32.8874067
+211,Uganda,Masindi,"Masindi, Uganda",NA,1.6873134,31.7138458
+212,Uganda,Soroti,"Soroti, Uganda",NA,1.7131812,33.6063855
+213,Uganda,Tororo,"Tororo, Uganda",NA,0.6782274,34.1865669
+214,Zambia,Chipata,"Chipata, Zambia",NA,-13.6445104,32.6447001
+215,Zambia,Choma,"Choma, Zambia",NA,-16.8054223,26.9970153
+216,Zambia,Kabwe,"Kabwe, Zambia",NA,-14.4285061,28.451357
+217,Zambia,Kasama,"Kasama, Zambia",NA,-10.2290555,31.193945
+218,Zambia,Kitwe,"Kitwe, Zambia",NA,-12.8231947,28.2175744
+219,Zambia,Lusaka,"Lusaka, Zambia",NA,-15.3875259,28.3228165
+220,Zambia,Mansa,"Mansa, Zambia",NA,-11.1892053,28.8888064
+221,Zambia,Mongu,"Mongu, Zambia",NA,-15.2735504,23.1501117
+222,Zambia,Solwezi,"Solwezi, Zambia",NA,-12.1668712,26.3839765
+223,Zimbabwe,Bulawayo,"Bulawayo, Zimbabwe",Renkini ,-20.1325066,28.626479
+224,Zimbabwe,Gwanda,"Gwanda, Zimbabwe",Gwanda town,-20.9398233,29.0110762
+225,Zimbabwe,Gweru,"Gweru, Zimbabwe",Kombayi,-19.468531,29.8120795
+226,Zimbabwe,Harare,"Harare, Zimbabwe",Mbare,-17.8251657,31.03351
+227,Zimbabwe,Masvingo,"Masvingo, Zimbabwe",Mucheke,-20.0791909,30.8384093
+228,Zimbabwe,Mutare,"Mutare, Zimbabwe",Sakubva,-18.9757714,32.650351
+229,NA,NA,"NA, NA",NA,-22.95764,18.49041
