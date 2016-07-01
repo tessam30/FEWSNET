@@ -1,0 +1,8 @@
+African Cereal Price Volatility database
+2002-2012
+25 countries
+Derived by FEWS NET from original databases contributed by multiple sources
+Monday, April 15, 2013
+
+All data represents the percentage change in the price for a cereal at a specific market, from the previous month. 
+No data = blank cell
