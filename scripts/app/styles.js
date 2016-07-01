@@ -190,11 +190,11 @@ define(["app/layers"], function(layers) {
 					mid = attr["mid"],
 					name = attr["market_loc"],
 					mdata = layers.marketsData[mid],
-					nCmods = mdata["cmods"].length,
+					mCmods = mdata["cmods"],
+					nCmods = mCmods.length,
 					size = dsize + nCmods;
 
 				//get price anomaly
-
 				var pa = null;
 
 				if (!com || !month || !year) {
@@ -217,20 +217,30 @@ define(["app/layers"], function(layers) {
 						size = 4;
 						mcolor = mcolor_n;
 					}
+					else if (pa == "none") {
+						size = 0;
+						mcolor = mcolor_n;
+					}
 					else if (size < 0) {
 						size = size * -1;
 						mcolor = mcolor_b3;
 
 						if (size < 4) {
 							size = 4;
+						} 
+						else if (size > 15) {
+							size = 15;
 						}
 					}
 					else if (size > 0) {
 						mcolor = mcolor_r3;
 
-						if (size > 10) {
-							size = 12;
-						} 
+						if (size < 4) {
+							size = 4;
+						}
+						else if (size > 15) {
+							size = 15;
+						}
 					} 
 					else if (size == 0) {
 						size = 4;

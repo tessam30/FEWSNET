@@ -197,8 +197,9 @@
 
  			var $this = this,
  				currSel = com + "" + month + "" + year,
- 				value = 0,
+ 				value = null,
  				feat = $this.marketsData[mid],
+ 				lcmods = feat["cmods"],
  				cmods = feat["cdata"];
 
  			//console.log("Commodities: ", cmods);
@@ -218,6 +219,11 @@
  				}
  			});
 
+ 			//make sure the market has the specified commodity
+ 			if (!value && $.inArray(com, lcmods) == -1) {
+ 				value = "none";
+ 			}
+ 			
  			return value;
  		}
  	};

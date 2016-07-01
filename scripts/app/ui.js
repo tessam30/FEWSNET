@@ -763,7 +763,6 @@
 	 					pa = layers.marketsData[mid]["sels"][csel];
 
 	 				if (pa && $.isNumeric(pa)) {
-	 					console.log("pa: ", pa, typeof(pa));
 	 					pa = parseFloat(pa).toFixed(2);
 	 				}
 	 				else {
