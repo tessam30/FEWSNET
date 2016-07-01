@@ -138,7 +138,7 @@ define(["app/layers"], function(layers) {
  		},
  		updateMarketStyles: function(com, month, year) {
  			//console.log("Layers: ", layers);
- 			console.log("Styles: ", com, month, year);
+ 			//console.log("Styles: ", com, month, year);
 
  			var $this = this,
  				com = com,
