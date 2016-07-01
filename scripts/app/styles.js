@@ -168,6 +168,7 @@ define(["app/layers"], function(layers) {
  				mcolor_g = "#d9d9d9",
  				mcolor_g2 = 'rgb(217, 217, 217)',
  				mcolor_g3 = 'rgba(217, 217, 217, .7)',
+ 				mcolor_n = 'rgba(255, 255, 255, 0)'
  				dsize = 4;
 
  			/*var style = new ol.style.Style({
@@ -212,23 +213,28 @@ define(["app/layers"], function(layers) {
 
 					mcolor = mcolor_w3;
 
-					if (size < 0) {
+					if (size.toUpperCase() == "NA") {
+						size = 4;
+						mcolor = mcolor_n;
+					}
+					else if (size < 0) {
 						size = size * -1;
 						mcolor = mcolor_b3;
+
+						if (size < 4) {
+							size = 4;
+						}
 					}
 					else if (size > 0) {
 						mcolor = mcolor_r3;
+
+						if (size > 10) {
+							size = 12;
+						} 
 					} 
-					else {
+					else if (size == 0) {
 						size = 4;
 						mcolor = mcolor_w3;
-					}
-
-					if (size > 10) {
-						size = 12;
-					} 
-					else if (size < 4) {
-						size = 4;
 					}
 				}
 				else {

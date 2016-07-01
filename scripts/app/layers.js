@@ -119,6 +119,7 @@
  				if (!marketsData[mid]) {
  					marketsData[mid] = p;
  					marketsData[mid]['cmods'] = [];
+ 					marketsData[mid]['sels'] = {};
  				}
  			});
 
@@ -193,11 +194,9 @@
  		getCommoditiesAttr: function(mid, col, com, month, year) {
  			//console.log("Price anomalies: ", arguments);
 
- 			var rand = Math.floor(Math.random() * 9) + 1;
-
- 			//return rand;
 
  			var $this = this,
+ 				currSel = com + "" + month + "" + year,
  				value = 0,
  				feat = $this.marketsData[mid],
  				cmods = feat["cdata"];
@@ -211,7 +210,9 @@
  					v = cmod[col];
 
  				if (com == c && m == month && y == year) {
- 					value = $.isNumeric(v) ? v : 0;
+ 					//value = $.isNumeric(v) ? v : 0;
+ 					value = v;
+ 					$this.marketsData[mid]["sels"][currSel] = v;
  					//console.log("PA: ", mid, c, m, y, v);
  					return;
  				}

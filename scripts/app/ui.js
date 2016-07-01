@@ -32,6 +32,7 @@
  			info.tooltip({
  				animation: false,
  				trigger: 'manual'
+ 				,html: true
  			});
 
  			$this.info = info;
@@ -750,8 +751,40 @@
 
 	 				txt = txt != "" ? txt : "No valid info";
 
-	 				txt += " - Commodities: ";
+	 				txt += "<br/>Commodities: ";
 	 				txt += mcmods != "" ? mcmods : "None";
+
+	 				//selected options
+	 				var sel = "",
+	 					sc = $this.currCmod,
+	 					sm = $this.currMonth,
+	 					sy = $this.currYear,
+	 					csel = sc + "" + sm + "" + sy,
+	 					pa = layers.marketsData[mid]["sels"][csel];
+
+	 				if (pa && $.isNumeric(pa)) {
+	 					console.log("pa: ", pa, typeof(pa));
+	 					pa = parseFloat(pa).toFixed(2);
+	 				}
+	 				else {
+	 					pa = "NA";
+	 				}
+
+	 				if (sc != "") {
+
+	 					sel += "<br/>";
+	 					sel += "Selection: ";
+	 					sel += sc;
+	 					sel += " (";
+	 					sel += pa;
+	 					sel += ") - ";
+	 					//sel += $this.lmonths[sm];
+	 					sel += sm;
+	 					sel += "/";
+	 					sel += sy;
+
+	 					txt += sel;
+	 				}
 	 			}
 
 	 			$this.info.tooltip("hide")
