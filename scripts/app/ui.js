@@ -172,13 +172,13 @@
 			$this.includeYears = years.is(":checked");
 
  			//history options change
- 			/*months.change(function(evt) {
+ 			months.change(function(evt) {
  				$this.includeMonths = $(evt.target).is(":checked");
  			});
 
  			years.change(function(evt) {
  				$this.includeYears = $(evt.target).is(":checked");
- 			});*/
+ 			});
 
  			//history animation
  			var hisPlay = $("#his-play"),
@@ -279,13 +279,17 @@
  			});
  			//move backward
  			hisBack.click(function(evt) {
- 				var currTime = $this.month + "_" + $this.year,
+ 				var currTime = $this.currMonth + "_" + $this.currYear,
  					m = $this.includeMonths,
  					y = $this.includeYears,
- 					mPos = $this.months.indexOf($this.month),
+ 					mPos = $this.months.indexOf(parseInt($this.currMonth)),
  					mLen = $this.months.length,
- 					yPos = $this.years.indexOf($this.year),
+ 					yPos = $this.years.indexOf(parseInt($this.currYear)),
  					yLen = $this.years.length;
+
+ 				console.log("His Back Options: ", m, y);
+ 				console.log("His Back Postions: ", mPos, yPos);
+ 				console.log("His Back Currents: ", $this.currMonth, $this.currYear);
 
  				var prevTime = "",
  					prevMonth = "",
@@ -294,6 +298,7 @@
  					prevYpos = yPos;
 
  				if( m && !y) {
+
 	 				if (mPos == 0) {
 	 					prevMpos = mLen - 1;
 	 				} else {
@@ -302,9 +307,12 @@
 
 	 				prevMonth = $this.months[prevMpos];
 	 				month.val(prevMonth);
+	 				$this.currMonth = prevMonth;
+
 	 				month.trigger("change");
 	 			}
 	 			else if(!m && y) {
+
 	 				if (yPos == 0) {
 	 					prevYpos = yLen - 1;
 	 				} else {
@@ -313,6 +321,8 @@
 
 	 				prevYear = $this.years[prevYpos];
 	 				year.val(prevYear);
+	 				$this.currYear = prevYear;
+
 	 				year.trigger("change");
 	 			}
 	 			else if (m && y) {
@@ -333,17 +343,21 @@
 	 						prevYpos = yLen - 1;
 	 					}
 	 				}
-
+	 				//get previous month
 	 				prevMonth = $this.months[prevMpos];
 	 				month.val(prevMonth);
+	 				$this.currMonth = prevMonth;
+	 				//get previous year
 	 				prevYear = $this.years[prevYpos];
 	 				year.val(prevYear);
+	 				$this.currYear = prevYear;
+	 				//trigger change event
 	 				month.trigger("change");
 	 			}
  			});
  			// move forward
  			hisNext.click(function(evt) {
- 				var currTime = $this.month + "_" + $this.year,
+ 				var currTime = $this.currMonth + "_" + $this.currYear,
  					m = $this.includeMonths,
  					y = $this.includeYears,
  					mPos = $this.months.indexOf($this.month),
@@ -453,6 +467,8 @@
  		populateMonths: function(months) {
  			$this = this;
 
+ 			$this.monthsEl.html("");
+
  			$.each(months, function(i, month) {
  				if (!$.isNumeric(month)) return;
 
@@ -465,11 +481,15 @@
  			});
  			//set default value
  			$this.currMonth = layers.months[layers.months.length - 1];
+ 			//save all months
+ 			$this.months = months;
  			app.currMonth = $this.currMonth;
  			$this.monthsEl.val($this.currMonth);
  		},
  		populateYears: function(years) {
  			$this = this;
+
+ 			$this.yearsEl.html("");
 
  			$.each(years.sort(), function(i, year) {
  
@@ -482,6 +502,8 @@
  			});
  			//set default value
  			$this.currYear = layers.years[layers.years.length - 1];
+ 			//save all years
+ 			$this.years = years;
  			app.currYear = $this.currYear;
  			$this.yearsEl.val($this.currYear);
  		},
