@@ -360,10 +360,14 @@
  				var currTime = $this.currMonth + "_" + $this.currYear,
  					m = $this.includeMonths,
  					y = $this.includeYears,
- 					mPos = $this.months.indexOf($this.month),
+ 					mPos = $this.months.indexOf(parseInt($this.currMonth)),
  					mLen = $this.months.length,
- 					yPos = $this.years.indexOf($this.year),
+ 					yPos = $this.years.indexOf(parseInt($this.currYear)),
  					yLen = $this.years.length;
+
+ 					console.log("His Next Options: ", m, y);
+	 				console.log("His Next Postions: ", mPos, yPos);
+	 				console.log("His Next Currents: ", $this.currMonth, $this.currYear);
 
  				var prevTime = "",
  					prevMonth = "",
@@ -380,6 +384,8 @@
 
 	 				prevMonth = $this.months[prevMpos];
 	 				month.val(prevMonth);
+	 				$this.currMonth = prevMonth;
+
 	 				month.trigger("change");
 	 			}
 	 			else if(!m && y) {
@@ -391,6 +397,8 @@
 
 	 				prevYear = $this.years[prevYpos];
 	 				year.val(prevYear);
+	 				$this.currYear = prevYear;
+
 	 				year.trigger("change");
 	 			}
 	 			else if (m && y) {
@@ -411,8 +419,12 @@
 
 	 				prevMonth = $this.months[prevMpos];
 	 				month.val(prevMonth);
+	 				$this.currMonth = prevMonth;
+
 	 				prevYear = $this.years[prevYpos];
 	 				year.val(prevYear);
+	 				$this.currYear = prevYear;
+
 	 				month.trigger("change");
 	 			}
  			});
