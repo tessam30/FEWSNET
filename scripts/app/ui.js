@@ -206,12 +206,12 @@
  					return;
  				}
 
- 				var currTime = $this.month + "_" + $this.year,
+ 				var currTime = $this.currMonth + "_" + $this.currYear,
  					m = $this.includeMonths,
  					y = $this.includeYears,
- 					mPos = $this.months.indexOf($this.month),
+ 					mPos = $this.months.indexOf(parseInt($this.currMonth)),
  					mLen = $this.months.length,
- 					yPos = $this.years.indexOf($this.year),
+ 					yPos = $this.years.indexOf(parseInt($this.currYear)),
  					yLen = $this.years.length,
  					hisTimes = [],
  					idx = 0;
@@ -223,16 +223,16 @@
  					prevYear = "",
  					prevYpos = yPos;
 
- 				//create a combination of months & years
+ 				//create a combination of months and/or years
  				if (m && !y) {
  					$.each($this.months, function(i, mth) {
- 						var d = mth + "_" + $this.year;
+ 						var d = mth + "_" + $this.currYear;
  						hisTimes.push(d);
 	 				});
  				}
  				else if (!m && y) {
  					$.each($this.years, function(j, yr) {
- 						var d = $this.month + "_" + yr;
+ 						var d = $this.currMonth + "_" + yr;
  						hisTimes.push(d);
  					});
  				}
@@ -248,11 +248,17 @@
  				len = hisTimes.length;
  				//Definne a playback functioin
  				var playHistory = function() {
-					var f = hisTimes[idx];
+					var f = hisTimes[idx],
+						m = f.split("_")[0],
+						y = f.split("_")[1];
 
-					$this.setHistoryField(f);
-					var ipcs = styles.updateIpcStyle(f);
-					$this.updateIpcStats(ipcs, f);
+					month.val(m);
+	 				$this.currMonth = m;
+	 				
+	 				year.val(y);
+	 				$this.currYear = y;
+
+	 				month.trigger("change");
 					
 					idx++;
 
@@ -343,11 +349,11 @@
 	 						prevYpos = yLen - 1;
 	 					}
 	 				}
-	 				//get previous month
+	 				//set previous month
 	 				prevMonth = $this.months[prevMpos];
 	 				month.val(prevMonth);
 	 				$this.currMonth = prevMonth;
-	 				//get previous year
+	 				//set previous year
 	 				prevYear = $this.years[prevYpos];
 	 				year.val(prevYear);
 	 				$this.currYear = prevYear;
