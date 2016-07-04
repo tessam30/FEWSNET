@@ -151,19 +151,6 @@
  				return $(opt).val();
  			});
 
- 			//bind change events to months and years dropdowns
- 			/*month.change(function(evt) {
- 				$this.month = $(evt.target).val();
- 				$this.year = year.val();
- 				$this.updateDistrictIpcs();
- 			});
-
- 			year.change(function(evt) {
- 				$this.month = month.val();
- 				$this.year = $(evt.target).val();
- 				$this.updateDistrictIpcs(); 
- 			});*/
-
  			//history options
  			var months = $("#his-months"),
  				years = $("#his-years");
@@ -223,22 +210,26 @@
  					prevYear = "",
  					prevYpos = yPos;
 
+ 				var mths = layers.reorderList($this.currMonth, $this.months),
+ 					yrs = layers.reorderList($this.currYear, $this.years);
+
  				//create a combination of months and/or years
  				if (m && !y) {
- 					$.each($this.months, function(i, mth) {
+
+ 					$.each(mths, function(i, mth) {
  						var d = mth + "_" + $this.currYear;
  						hisTimes.push(d);
 	 				});
  				}
  				else if (!m && y) {
- 					$.each($this.years, function(j, yr) {
+ 					$.each(yrs, function(j, yr) {
  						var d = $this.currMonth + "_" + yr;
  						hisTimes.push(d);
  					});
  				}
  				else if (m && y) {
-	 				$.each($this.years, function(i, yr) {
-	 					$.each($this.months, function(j, mth) {
+	 				$.each(yrs, function(i, yr) {
+	 					$.each(mths, function(j, mth) {
 	 						var d = mth + "_" + yr;
 	 						hisTimes.push(d);
 	 					});
@@ -254,7 +245,7 @@
 
 					month.val(m);
 	 				$this.currMonth = m;
-	 				
+
 	 				year.val(y);
 	 				$this.currYear = y;
 
@@ -292,10 +283,6 @@
  					mLen = $this.months.length,
  					yPos = $this.years.indexOf(parseInt($this.currYear)),
  					yLen = $this.years.length;
-
- 				console.log("His Back Options: ", m, y);
- 				console.log("His Back Postions: ", mPos, yPos);
- 				console.log("His Back Currents: ", $this.currMonth, $this.currYear);
 
  				var prevTime = "",
  					prevMonth = "",
@@ -370,10 +357,6 @@
  					mLen = $this.months.length,
  					yPos = $this.years.indexOf(parseInt($this.currYear)),
  					yLen = $this.years.length;
-
- 					console.log("His Next Options: ", m, y);
-	 				console.log("His Next Postions: ", mPos, yPos);
-	 				console.log("His Next Currents: ", $this.currMonth, $this.currYear);
 
  				var prevTime = "",
  					prevMonth = "",
@@ -775,7 +758,7 @@
 	 			var mid = attr["mid"],
 	 				mname = attr["name"],
 	 				mloc = attr["market_loc"],
-	 				mcmods = layers.marketsData[mid] ? layers.marketsData[mid]["cmods"].join(", ") : "";
+	 				mcmods = layers.marketsData && layers.marketsData[mid] ? layers.marketsData[mid]["cmods"].join(", ") : "";
 
 	 			var txt = "";
 

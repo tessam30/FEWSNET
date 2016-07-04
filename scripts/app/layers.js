@@ -225,6 +225,15 @@
  			}
  			
  			return value;
+ 		},
+ 		reorderList: function(item, list) {
+ 			var idx = $.isNumeric(item) ? list.indexOf(parseInt(item)) : list.indexOf(item),
+ 				len = list.length;
+
+ 			var l1 = list.splice(idx),
+ 				newList = l1.concat(list);
+
+ 			return newList;
  		}
  	};
  });
