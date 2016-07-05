@@ -26,7 +26,12 @@
  				lCountries = $("#lyr-countries"),
  				lMarkets = $("#lyr-markets"),
  				hisSpeed = $("#his-speed"),
- 				history = $("#his-update");
+ 				history = $("#his-update"),
+ 				hisBarHeader = $("#his-bar-header"),
+ 				hisBar = $("#his-bar");
+
+ 			$this.hisBarHeader = hisBarHeader;
+ 			$this.hisBar = hisBar;
 
  			//map tooltip
  			info.tooltip({
@@ -51,11 +56,12 @@
  				$this.hisSpeed = s;
  			});
 
- 			history.slider({
- 				value: 4,
- 				ticks: [2001, 2002, 2003, 2004, 2005],
- 				ticks_labels: ['2001', '2002', '2003', '2004', '2005'],
- 				ticks_snap_bound: 30
+ 			/*history.slider({
+ 				value: 2005,
+ 				ticks: [2002, 2003, 2004, 2005],
+ 				ticks_labels: ['2002', '2003', '2004', '2005']
+ 				,ticks_snap_bound: 30
+ 				,tooltip: 'always'
  				,formater: function(value) {
  					var v = value;
  					return v;
@@ -63,7 +69,19 @@
  			})
  			.on("slide", function(evt) {
  				
- 			});
+ 			});*/
+
+ 			/*history.ionRangeSlider({
+ 				type: "single"
+ 				//,values: ['2002', '2003', '2004', '2005']
+			    ,min: 0
+			    ,max: 4
+			    ,from: 0
+			    //,to: 3
+			    ,grid: true
+ 			});*/
+
+ 			$this.history = history;
 
  			pStats.click(this.toggleGraphs);
  			pLegend.click(this.toggleLegend);
@@ -161,10 +179,12 @@
  			//history options change
  			months.change(function(evt) {
  				$this.includeMonths = $(evt.target).is(":checked");
+ 				$this.updateHistorySlider();
  			});
 
  			years.change(function(evt) {
  				$this.includeYears = $(evt.target).is(":checked");
+ 				$this.updateHistorySlider();
  			});
 
  			//history animation
@@ -237,6 +257,7 @@
 	 			}
  				//get the length of history times
  				len = hisTimes.length;
+ 				console.log("History steps: ", len, hisTimes);
  				//Definne a playback functioin
  				var playHistory = function() {
 					var f = hisTimes[idx],
@@ -446,6 +467,8 @@
 
  			//update markets sytles
  			styles.updateMarketStyles();
+
+ 			$this.updateHistorySlider();
  		},
  		populateCommodities: function(cmods) {
  			$this = this;
@@ -507,6 +530,66 @@
  			$this.years = years;
  			app.currYear = $this.currYear;
  			$this.yearsEl.val($this.currYear);
+ 		},
+ 		updateHistorySlider: function() {
+ 			console.log("Updating slider ...");
+
+ 			var $this = this,
+ 				slider = $this.history.data("ionRangeSlider"),
+ 				m = $this.includeMonths,
+ 				cm = $this.currMonth,
+ 				mths = $this.months,
+ 				y = $this.includeYears,
+ 				cy = $this.currYear,
+ 				yrs = $this.years,
+ 				values = [],
+ 				cValue = "",
+ 				vLen = 0;
+
+ 			if (m && !y) {
+ 				values = $this.lmonths;
+ 				cValue = cm;
+ 			}
+ 			else if (!m && y) {
+ 				values = $this.years;
+ 				cValue = cy;
+ 			}
+ 			else if (m && y) {
+ 				$.each(yrs, function(i, yr) {
+ 					$.each(mths, function(j, mth) {
+ 						var d = mth + "/" + yr;
+ 						values.push(d);
+
+ 						if (cm == mth && cy == yr) {
+ 							cValue = d;
+ 						}
+ 					});
+ 				});
+ 			}
+ 			else {
+
+ 			}
+
+ 			vLen = values.length;
+
+ 			if (slider) {
+ 				slider.destroy();
+ 			}
+
+ 			console.log("Slider: ", cValue, vLen);
+
+ 			$this.history.ionRangeSlider({
+ 				type: "single"
+ 				,values: values
+ 				//,value: cValue
+ 				,min: 0
+ 				,max: vLen - 1
+ 				,from: cValue
+ 				//,to: values[len-1]
+ 				,grid: true
+ 				//,grid_num: 2
+ 				,prettify_separator: ""
+ 			});
  		},
  		getHistoryField: function() {
  			var m = $("#price-month").val(),
@@ -816,6 +899,113 @@
 	 		} 
 	 		else {
 	 			$this.info.tooltip("hide");
+	 		}
+	 	},
+	 	updateMarketGraph: function(position) {
+
+	 		var tFeat = app.map.forEachFeatureAtPixel(position, function(f, lyr){
+	 			return f;
+	 		});
+
+	 		if (tFeat) {
+	 			var attr = tFeat.getProperties(),
+	 				cname = attr["NAME"],
+	 				creg = attr["SUBREGION"];
+
+	 			if (creg) return;
+
+	 			var mid = attr["mid"],
+	 				mname = attr["name"],
+	 				mloc = attr["market_loc"],
+	 				cdata = layers.marketsData && layers.marketsData[mid] ? layers.marketsData[mid]["cdata"] : [];
+
+	 			if (!cdata.length) return;
+
+	 			cdata = $.map(cdata, function(d, i) {
+	 				if (!$.isNumeric(d.price_anomaly)) {
+	 					d.price_anomaly = 0;
+	 				}
+
+	 				d.price_anomaly = parseFloat(d.price_anomaly);
+	 				d.date = d.d_month + "/" + d.d_year;
+
+	 				return {
+	 					id: d.id,
+	 					date: d.date,
+	 					price_anomaly: d.price_anomaly
+	 				};
+	 			});
+
+	 			var formatDate = d3.time.format("%d-%b-%y");
+
+	 			//console.log("Market Data: ", layers.marketsData[mid]);
+
+	 			$this.hisBarHeader.text("Market: " + mloc + " (Price Anomaly)");
+	 			$this.hisBar.html("");
+
+	 			var margin = {top: 20, right: 20, bottom: 30, left: 50},
+				    width = $this.hisBar.width() - margin.left - margin.right,
+				    height = 300 - margin.top - margin.bottom;
+
+				var x = d3.time.scale()
+				    .range([0, width]);
+
+				var y = d3.scale.linear()
+				    .range([height, 0]);
+
+				var xAxis = d3.svg.axis()
+				    .scale(x)
+				    .orient("bottom");
+
+				var yAxis = d3.svg.axis()
+				    .scale(y)
+				    .orient("left");
+
+				var line = d3.svg.line()
+				    .x(function(d) { 
+				    	return x(d.id); 
+				    })
+				    .y(function(d) { 
+				    	return y(d.price_anomaly);  
+				    })
+				    .interpolate("linear");
+
+				var svg = d3.select("#his-bar").append("svg")
+				    .attr("width", width + margin.left + margin.right)
+				    .attr("height", height + margin.top + margin.bottom)
+				  	.append("g")
+				    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+				x.domain(d3.extent(cdata, function(d) { 
+					return d.id; 
+				}));
+  				y.domain(d3.extent(cdata, function(d) { 
+  					return d.price_anomaly; 
+  				}));
+
+  				svg.append("g")
+					.attr("class", "x axis")
+					.attr("transform", "translate(0," + height + ")")
+					.call(xAxis);
+
+				svg.append("g")
+					.attr("class", "y axis")
+					.call(yAxis);
+					/*.append("text")
+					.attr("transform", "rotate(-90)")
+					.attr("y", 6)
+					.attr("dy", ".71em")
+					.style("text-anchor", "end")
+					.text("Price variabilily");*/
+
+				svg.append("path")
+					.datum(cdata)
+					.attr("class", "line")
+					.attr("d", line);
+	 			
+	 		}
+	 		else {
+
 	 		}
 	 	}
  	};

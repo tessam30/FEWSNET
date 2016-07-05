@@ -84,5 +84,16 @@ require(["app/ui", "app/mapping", "app/layers"],
 
 		ui.displayMarketInfo(pos);
 	});
+
+	//mouse move event
+	app.map.on("click", function(evt) {
+		if (evt.dragging) {
+			return;
+		}
+
+		var pos = app.map.getEventPixel(evt.originalEvent);
+
+		ui.updateMarketGraph(pos);
+	});
 });
 

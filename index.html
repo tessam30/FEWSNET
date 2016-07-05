@@ -9,6 +9,9 @@
 		<link rel="stylesheet" type="text/css" href="styles/font-awesome-4.3.0/css/font-awesome.min.css" />
 		<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="styles/bootstrap-slider.css" />
+		<link rel="stylesheet" type="text/css" href="libs/ion.rangeSlider-2.1.4/css/ion.rangeSlider.css" />
+		<link rel="stylesheet" type="text/css" href="libs/ion.rangeSlider-2.1.4/css/ion.rangeSlider.css" />
+		<link rel="stylesheet" type="text/css" href="libs/ion.rangeSlider-2.1.4/css/ion.rangeSlider.skinModern.css" />
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.5.0/ol.css" type="text/css" />
 		<link rel="stylesheet" type="text/css" href="styles/main.css" />
 
@@ -17,8 +20,9 @@
 
 		<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.11.0/ol.js"></script>
-		<script src="scripts/libs/bootstrap-slider.js"></script>
-		<script type="text/javascript" src="http://d3js.org/d3.v3.js" charset="utf-8"></script>
+		<script type="text/javascript" src="scripts/libs/bootstrap-slider.js"></script>
+		<script type="text/javascript" src="libs/ion.rangeSlider-2.1.4/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script data-main="scripts/main" src="scripts/libs/require.js"></script>
 	</head>
 
@@ -159,7 +163,6 @@
 						</button>
 					</div>
 				</div>
-				
 			</div>
 			<!-- Legend -->
 			<div id="legend-div" class="">
@@ -180,9 +183,9 @@
 			<!-- Graphs -->
 			<div id="graths-div" class="">
 				<!-- Play back stats -->
-				<div id="his-form" class="form-group">
+				<div id="his-form" class="his-form form-group">
 					<!-- Play back speed -->
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label class="control-label">History options: </label><br/>
 						<input id="his-update" 
 							class="span2" type="text" value="" 
@@ -190,10 +193,10 @@
 							data-slider-selection="before"
 							data-slider-tooltip="always"
 							/>
-					</div>
+					</div> -->
 					<!--
 							data-provide="slider"
-							data-slider-ticks="[]"
+							data-slider-ticks="[1,2,3]"
 	    					data-slider-ticks-labels='["$1", "$2", "$3"]' 
 	    					data-slider-ticks-snap-bounds=30
 							data-slider-min="1"
@@ -201,6 +204,22 @@
 							data-slider-step="1"
 							data-slider-value="2"
 					-->
+				</div>
+				<!-- HTML5 range input -->
+				<!-- <div id="" class="form-group">
+					<input type="range" min="0" max="50" value="25" step="5" />
+				</div> -->
+
+				<!-- D3 Slider -->
+				<div class="his-form form-group">
+					<label id="his-slider-header">Dates:</label>
+					<input type="text" id="his-update" value="" />
+				</div>
+
+				<!-- D3 Graph -->
+				<div class="his-form form-group">
+					<label id="his-bar-header"></label>
+					<div id="his-bar"></div>
 				</div>
 				
 			</div>
