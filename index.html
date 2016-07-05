@@ -34,12 +34,19 @@
 			ga('create', 'UA-80314711-1', 'auto');
 			ga('send', 'pageview');
 
-			var trackOutboundLink = function(url) {
-				ga("send", "event", "outbound", url, {
+			var trackOutboundLink = function(event) {
+				/*ga("send", "event", "outbound", url, {
 					"transport": "beacon",
 					"hitCallback": function() { 
 						//document.location = url;
 					}
+				});*/
+
+				ga("send", "event", {
+					eventCategory: 'Outbound Link',
+				    eventAction: 'click',
+				    eventLabel: event.target.href,
+				    transport: 'beacon'
 				});
 			};
 		</script>
@@ -272,7 +279,7 @@
 						<p></p>
 						<p></p>
 						<p><a href="./docs/ui-template.png" target="_blank"
-							onclick="trackOutboundLink('http://devgeocenter.org/fewsnet/docs/ui-template.png');">Testing ga download tracking</a></p>
+							onclick="trackOutboundLink">Testing ga download tracking</a></p>
 
 					</div>
 					<div class="modal-footer">
