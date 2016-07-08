@@ -923,7 +923,7 @@
 
 	 			cdata = $.map(cdata, function(d, i) {
 	 				if (!$.isNumeric(d.price_anomaly)) {
-	 					d.price_anomaly = 0;
+	 					//d.price_anomaly = 0;
 	 				}
 
 	 				d.price_anomaly = parseFloat(d.price_anomaly);
@@ -962,6 +962,7 @@
 				    .orient("left");
 
 				var line = d3.svg.line()
+					//.defined(function(d) { return !isNaN(d.price_anomaly); })
 				    .x(function(d) { 
 				    	return x(d.id); 
 				    })
