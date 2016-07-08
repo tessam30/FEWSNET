@@ -936,7 +936,7 @@
 	 				};
 	 			});
 
-	 			var formatDate = d3.time.format("%d-%b-%y");
+	 			var formatDate = "testing"; //d3.time.format("%d-%b-%y");
 
 	 			//console.log("Market Data: ", layers.marketsData[mid]);
 
