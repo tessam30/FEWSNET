@@ -48,16 +48,6 @@ require(["app/ui", "app/mapping", "app/layers"],
 		app.map.getView().fit(cExt, app.map.getSize());
 		app.countries = countries
 		app.markets = markets;
-		app.markets = markets;
-		app.markets = markets;
-		app.markets = markets;
-		app.markets = markets;
-		app.markets = markets;
-		app.markets = markets;
-		app.markets = markets;
-		app.markets = markets;
-		app.markets = markets;
-		app.markets = markets;
 		//bind all ui events
 		ui.bindEvents();
 
