@@ -923,7 +923,7 @@
 
 	 			cdata = $.map(cdata, function(d, i) {
 	 				if (!$.isNumeric(d.price_anomaly)) {
-	 					//d.price_anomaly = 0;
+	 					d.price_anomaly = 0;
 	 				}
 
 	 				d.price_anomaly = parseFloat(d.price_anomaly);
@@ -936,7 +936,7 @@
 	 				};
 	 			});
 
-	 			var formatDate = "testing"; //d3.time.format("%d-%b-%y");
+	 			var formatDate = d3.time.format("%d-%b-%y");
 
 	 			//console.log("Market Data: ", layers.marketsData[mid]);
 
