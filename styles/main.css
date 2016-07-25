@@ -159,6 +159,16 @@ text.axis-worktime {
     background: #FF8282;
 }
 
+.irs-grid-text {
+    color: "#000" !important;
+    font-weight: bold;
+    -webkit-transform:rotate(-45deg) !important;
+    -moz-transform:rotate(-45deg) !important;
+    -o-transform: rotate(-45deg) !important;
+    -ms-transform:rotate(-45deg) !important;
+    transform: rotate(-45deg) !important;
+}
+
 .progress {
     position: relative;
     height: 9%;

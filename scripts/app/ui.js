@@ -10,11 +10,15 @@
  		month: "",
  		months: [],
  		lmonths: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+ 		lmonths2: ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
  		includeMonths: true,
  		currYear: "",
  		year: "",
  		years: [],
  		includeYears: false,
+ 		currMY: "",
+ 		hisValues: [],
+ 		currHisInfo: "",
  		hisSpeed: 1000,
  		bindEvents: function() {
  			var $this = this,
@@ -28,10 +32,12 @@
  				hisSpeed = $("#his-speed"),
  				history = $("#his-update"),
  				hisBarHeader = $("#his-bar-header"),
- 				hisBar = $("#his-bar");
+ 				hisBar = $("#his-bar"),
+ 				hisInfo = $("#his-slider-info");
 
  			$this.hisBarHeader = hisBarHeader;
  			$this.hisBar = hisBar;
+ 			$this.hisInfo = hisInfo;
 
  			//map tooltip
  			info.tooltip({
@@ -42,6 +48,7 @@
 
  			$this.info = info;
 
+ 			//history play speed
  			hisSpeed.slider({
  				value: 0,
  				formater: function(value) {
@@ -56,38 +63,15 @@
  				$this.hisSpeed = s;
  			});
 
- 			/*history.slider({
- 				value: 2005,
- 				ticks: [2002, 2003, 2004, 2005],
- 				ticks_labels: ['2002', '2003', '2004', '2005']
- 				,ticks_snap_bound: 30
- 				,tooltip: 'always'
- 				,formater: function(value) {
- 					var v = value;
- 					return v;
- 				}
- 			})
- 			.on("slide", function(evt) {
- 				
- 			});*/
-
- 			/*history.ionRangeSlider({
- 				type: "single"
- 				//,values: ['2002', '2003', '2004', '2005']
-			    ,min: 0
-			    ,max: 4
-			    ,from: 0
-			    //,to: 3
-			    ,grid: true
- 			});*/
-
+ 			// history slider instance
  			$this.history = history;
 
+ 			//menu click events
  			pStats.click(this.toggleGraphs);
  			pLegend.click(this.toggleLegend);
  			pOptions.click(this.togglePanel);
 
- 			//layers change events
+ 			//countries layer change events
  			lCountries.change(function(evt) {
  				if (!app.countries) return;
 
@@ -101,6 +85,7 @@
  				}
  			});
 
+ 			// markets layer change event
  			lMarkets.change(function(evt) {
  				if (!app.markets) return;
 
@@ -139,19 +124,28 @@
  				if (v && v != "") {
  					$this.currMonth = v;
  					app.currMonth = $this.currMonth;
+
  					styles.updateMarketStyles(c, v, y);
+ 					$this.updateHistorySlider();
+
+ 					//$this.setHistoryField(v);
  				}
  			});
 
  			year.on("change", function(evt) {
  				var v = $(evt.target).val(),
  					c = $this.currCmod,
- 					m = $this.currMonth;
+ 					m = $this.currMonth,
+ 					hisVal = "";
 
  				if (v && v != "") {
  					$this.currYear = v;
  					app.currYear = $this.currYear;
+
  					styles.updateMarketStyles(c, m, v);
+ 					$this.updateHistorySlider();
+
+ 					//$this.setHistoryField(v);
  				}
  			});
 
@@ -179,12 +173,12 @@
  			//history options change
  			months.change(function(evt) {
  				$this.includeMonths = $(evt.target).is(":checked");
- 				$this.updateHistorySlider();
+ 				//$this.updateHistorySlider();
  			});
 
  			years.change(function(evt) {
  				$this.includeYears = $(evt.target).is(":checked");
- 				$this.updateHistorySlider();
+ 				//$this.updateHistorySlider();
  			});
 
  			//history animation
@@ -467,7 +461,7 @@
 
  			//update markets sytles
  			styles.updateMarketStyles();
-
+ 			//initialize history slider
  			$this.updateHistorySlider();
  		},
  		populateCommodities: function(cmods) {
@@ -532,69 +526,85 @@
  			$this.yearsEl.val($this.currYear);
  		},
  		updateHistorySlider: function() {
- 			console.log("Updating slider ...");
-
+ 			//console.log("Updating slider ...");
  			var $this = this,
  				slider = $this.history.data("ionRangeSlider"),
  				m = $this.includeMonths,
  				cm = $this.currMonth,
  				mths = $this.months,
+ 				mths2 = $this.lmonths2,
  				y = $this.includeYears,
  				cy = $this.currYear,
  				yrs = $this.years,
  				values = [],
  				cValue = "",
+ 				gNum = 12,
  				vLen = 0;
 
- 			if (m && !y) {
- 				values = $this.lmonths;
- 				cValue = cm;
- 			}
- 			else if (!m && y) {
- 				values = $this.years;
- 				cValue = cy;
- 			}
- 			else if (m && y) {
- 				$.each(yrs, function(i, yr) {
- 					$.each(mths, function(j, mth) {
- 						var d = mth + "/" + yr;
- 						values.push(d);
+			//build all combinaison of months/years 			
+ 			$.each(yrs, function(i, yr) {
+				$.each(mths, function(j, mth) {
+					var d = mth + "/" + yr;
+					values.push(d);
 
- 						if (cm == mth && cy == yr) {
- 							cValue = d;
- 						}
- 					});
- 				});
- 			}
- 			else {
-
- 			}
+					if (cm == mth && cy == yr) {
+						cValue = d;
+					}
+				});
+			});
 
  			vLen = values.length;
+			gNum = vLen / 4;
+
+ 			$this.hisValues = values;
+ 			$this.currMY = cValue;
+ 			$this.currHisInfo = $this.currCmod + ", " + $this.currMY
+ 			$this.hisInfo.text($this.currHisInfo);
 
  			if (slider) {
  				slider.destroy();
  			}
 
- 			console.log("Slider: ", cValue, vLen);
+ 			console.log("Slider value:", cValue, values.indexOf(cValue));
+  			console.log("Slider: ", cValue, vLen, gNum);
 
  			$this.history.ionRangeSlider({
  				type: "single"
- 				,values: values
- 				//,value: cValue
- 				,min: 0
- 				,max: vLen - 1
- 				,from: cValue
- 				//,to: values[len-1]
+ 				,values: values	
  				,grid: true
- 				//,grid_num: 2
- 				,prettify_separator: ""
+ 				//,grid_num: gNum
+ 				//,force_edges: true
+ 				//,prettify_separator: ""
+ 				,prettify_enabled: true
+ 				,prettify: function(val) {
+ 					console.log("Value: ", val);
+ 					return "Hello: " + val;	
+ 				}
+ 				//,onChange: function(evt) {
+ 				,onFinish: function(evt) {
+ 					//console.log("History change: ", evt);
+ 					var his = evt.input[0],
+ 						val = his.value,
+ 						min = evt.min,
+ 						max = evt.max,
+  						fval = evt.from_value;
+
+ 					console.log("History value: ", val);
+ 					$this.setHistoryField(val);
+ 				}
+ 			});
+
+ 			//update current value of slider
+ 			$this.history
+ 			.data("ionRangeSlider")
+ 			.update({
+ 				from: values.indexOf(cValue)
  			});
  		},
  		getHistoryField: function() {
- 			var m = $("#price-month").val(),
- 				y = $("#price-year").val(),
- 				field = m.toUpperCase() + "_" + y.toUpperCase();
+ 			var m = this.currMonth,
+ 				y = this.currYear,
+ 				field = m + "/" + y;
 
  			if (field) {
  				return field;
@@ -603,12 +613,23 @@
  			}
  		},
  		setHistoryField: function(field) {
- 			var my = field.split("_"),
- 				m = my[0],
- 				y = my[1];
+ 			var $this = this,
+ 				inMths = $this.includeMonths,
+ 				inYrs = $this.includeYears,
+ 				values = field ? field.split("/") : "",
+ 				m = values[0],
+ 				y = values[1];
 
- 			this.monthsEl.val(m);
- 			this.yearsEl.val(y);
+ 			$this.currMonth = m;
+ 			app.currMonth = m;
+ 			
+ 			$this.currYear = y;
+ 			app.currYear = y;
+
+ 			$this.monthsEl.val(m);
+ 			$this.yearsEl.val(y);
+
+ 			$this.yearsEl.trigger('change');
  		},
  		updateDistrictIpcs: function() {
  			var field = this.getHistoryField(),
