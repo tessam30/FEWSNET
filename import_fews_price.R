@@ -106,8 +106,9 @@ ggplot(rw %>% filter(market %like% 'Ruhango'), aes(x = diff)) +
   theme_ygrid()
 
 
-ggplot(fews %>% filter(country %like% 'Mada'), aes(x = start_date, y = common_currency_price, colour = market)) +
+ggplot(fews %>% filter(country %like% 'Malaw'), aes(x = start_date, y = common_currency_price, colour = market)) +
   geom_line(size = 3, alpha = 0.2) +
   stat_summary(colour = grey75K, fun.y = 'mean', size = 0.75, geom = 'line') +
-  facet_wrap(~product) +
-  theme_xygrid(legend.position = c(0.8, 0.2))
+  facet_wrap(~product, scales = 'free_y') +
+  theme_xygrid() +
+  scale_x_date(limits = c(as.Date('2011-01-01'), as.Date('2016-10-01')))
