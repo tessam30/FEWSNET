@@ -25,7 +25,7 @@ ggplot(mkts, aes(x = lon, y = lat, colour = country)) +
 
 # quick map ---------------------------------------------------------------
 # color scale
-categPal = colorFactor(palette = 'Pastel1', domain = unique(mkts$country))
+categPal = colorFactor(palette = 'Set1', domain = unique(mkts$country))
 
 
 # tooltip
