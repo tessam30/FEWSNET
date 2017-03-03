@@ -42,14 +42,79 @@ setwd("~/FEWSNET/datain")
   htic_df <- list(htic_data1, htic_meta1, htic_data2, htic_meta2)
   lapply(htic_df, df_detail)
 
-## Append the data frames together to create updated set
-  data <- rbind(htic_data1, htic_data2)
-  glimpse(data)  
+## Append the data frames together to create updated set, convert Phase to numeric
+  data <- rbind(htic_data1, htic_data2) 
+  data = data %>% 
+    # Hard to coerce a vector with mixed characters, so setting NC to 999
+    mutate(PHASE = ifelse(PHASE == "NC", "999", PHASE)) %>% 
+    mutate_each(funs(as.numeric), starts_with("PHASE"))
+  glimpse(data) 
+  table(data$PHASE)
   
   
+ cnt_select <- function(x) { 
   data_cs = data %>%
-    filter(COUNTRY == "MZ" & SCENARIO == "CS") %>% 
-    select(
+    filter(COUNTRY == "ET" & SCENARIO == "CS") %>% 
+    select(c(5:6, 12)) %>%
+    separate(REPORTING, into = c("rep_year", "rep_month", "rep_day"), sep = "-") %>% 
+    select(-rep_day) %>% 
+    left_join(., months, by = c("rep_month" = "midx")) %>% # Breaking here w/ NAs entering.
+    unite(., rep_date, c(mabr, rep_year), sep = "_")   %>% 
+    select(., -rep_month) %>% 
+      
+    # Reshape the data to be wide to be joined with a shapefile and aggregated
+    spread(., rep_date, PHASE)  %>% 
+      mutate(IPC1 = apply(., 1, function(x) length(which(x==1))),
+           IPC2 = apply(., 1, function(x) length(which(x==2))),
+           IPC3 = apply(., 1, function(x) length(which(x==3))),
+           IPC4 = apply(., 1, function(x) length(which(x==4))),
+         
+           IPC2plus = apply(., 1, function(x) length(which(x>=2 & x <=5))),
+           IPC3plus = apply(., 1, function(x) length(which(x>=3 & x <=5))),
+           IPC4plus = apply(., 1, function(x) length(which(x>=4 & x <=5))))
+           
+           # records = length(names(select(., -1))))
+  
+  return(data_cs)
+ }
+   
+ cnt_select("ET")
+ 
+       
+    # NExt steps, group by admin zone and create counts of 1, 2, 3, 4, and 5s
+    data_cs2 = data_cs %>% 
+    
+    
+    
+    
+    mutate(IPC1PLUS = length(which(select(data_cs, -1) == 1)))
+    
+    
+    
+  
+  
+  %>% 
+        
+    # Summarize across rows to create aggreagets for zones 1 - 5
+    mutate( IPC1PLUS =  
+  
+  
+
+                   
+    
+    mutate_each(funs(length), 
+                starts_with(c("APR", "FEB", "JAN", "JUL", "JUN", "OCT")))
+    
+    
+    
+  data_cs =   
+    
+    select(., -1) %>% 
+    sapply(., as.numeric) %>% 
+    str(.)
+  
+  %>% 
+    mutate(., ipcCount = rowSums(select(-FNID)))
   
   
   
