@@ -19,10 +19,12 @@ library(lubridate)
 library(readr)
 library(ggplot2)
 library(dtplyr)
+library(data.table)
+library(readxl)
 
 # import raw data ---------------------------------------------------------
-fews_raw = read_csv(paste0(base_dir, base_date, '_fews.csv'))
-
+# Reading in using read.csv doesn't retain accent marks.
+fews_raw = read_excel(paste0(base_dir, base_date, '_fews.xlsx'))
 
 # explore data ------------------------------------------------------------
 table(fews_raw$product)
@@ -33,8 +35,9 @@ qplot(x = common_currency_price, data = fews_raw %>% filter(common_currency_pric
 
 # get rid of the derived data ---------------------------------------------
 fews = fews_raw %>% 
-  mutate(start_date = lubridate::mdy(start_date),
-         end_date = lubridate::mdy(period_date)) %>% 
+  mutate(year = lubridate::year(start_date),
+         month = lubridate::month(start_date),
+         end_date = (period_date)) %>%
   select(-contains('value_'), 
          -contains('average'), 
          -pct_change_from_one_month_ago,
@@ -50,16 +53,22 @@ fews = fews_raw %>%
 
 # exploring rwanda data ---------------------------------------------------
 rw = fews %>% 
-  filter(country == 'Rwanda') %>% 
+  filter(country == 'Nigeria') %>% 
   mutate(filtered_price = ifelse(common_currency_price > 50, NA, common_currency_price))
 
 # product, cpcv2 (code), and cpcv2_description (group) all same
 table(rw$product)
 
-ggplot(rw, aes(x = start_date, y = filtered_price, colour = market)) +
+ggplot(rw %>% filter(!product %like% 'Pal'), aes(x = start_date, y = filtered_price, colour = market)) +
   geom_line(size = 3, alpha = 0.2) +
   stat_summary(colour = grey75K, fun.y = 'mean', size = 0.75, geom = 'line') +
-  facet_wrap(~product) +
+  facet_wrap(~product, scales = 'free_y') +
+  theme_xygrid(legend.position = c(0.8, 0.2))
+
+ggplot(rw %>% filter(!is.na(common_currency_price)), aes(x = start_date, y = common_currency_price, colour = market)) +
+  geom_line(size = 3, alpha = 0.2) +
+  stat_summary(colour = grey75K, fun.y = 'mean', size = 0.75, geom = 'line') +
+  facet_wrap(~product, scales = 'free_y') +
   theme_xygrid(legend.position = c(0.8, 0.2))
 
 # Identify unusual markets
