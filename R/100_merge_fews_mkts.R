@@ -9,6 +9,7 @@ library(fuzzyjoin)
 
 
 # load the data -----------------------------------------------------------
+setwd("~/GitHub/FEWSNET/R")
 
 # FEWS NET market prices
 source('01_import_fews_price.R')
@@ -17,7 +18,7 @@ source('01_import_fews_price.R')
 source('02_import_mkt_location.R')
 
 # CPI
-source('import_CPI.R')
+source('03_import_CPI.R')
 
 
 # merge price + market lat/lon --------------------------------------------
@@ -81,7 +82,6 @@ df = df %>%
 
 df = left_join(df, cpi, by = c('country', 'month', 'year'))
 
-df %>% count(base_year)
 
 
 # CALCULATE “REAL” DOLLARS FOR VALUES -------------------------------------
@@ -103,3 +103,15 @@ ggplot(df %>% filter(country == "Ethiopia",
   facet_wrap(~ product, scales = 'free_y') +
   theme_xygrid()
 
+
+ggplot(df %>% filter(country == "Ethiopia",
+                     product %in% c('Cattle', 'Cattle (Export quality)',
+                                    'Mixed Teff', 'Maize (White)',
+                                    'Sheep (Export quality)', 'Wheat Grain',
+                                    'Sorghum (Yellow)', 'Goats (Local Quality)')
+), aes(x = start_date, y = common_currency_price)) +
+  geom_line(size = 2, alpha = 0.5, colour = 'blue') +
+  # geom_line(aes(y = common_currency_price), size = 2, alpha = 0.5, colour = 'blue') +
+  geom_smooth(colour = grey75K, se = FALSE) +
+  facet_wrap(~ product, scales = 'free_y') +
+  theme_xygrid()
